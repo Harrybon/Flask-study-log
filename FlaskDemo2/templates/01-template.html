@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask模板</title>
+    <style>
+        h1{
+            width: 335px;
+            height:35px;
+            background: #4A8AF4;
+            color: yellow;
+            border-radius: 5px;
+        }
+        h2{
+            width: 235px;
+            height:35px;
+            background: #4A8AF4;
+            color: yellow;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>程序人生</h1>
+    <h1>{{params.name}}</h1>
+    <h1>歌名：{{params.Name}}</h1>
+    <h1>作词： {{params.contens}}</h1>
+    <h1>作曲： {{params.music}}</h1>
+    <h1>演唱： {{params.player}}</h1>
+</body>
+</html>

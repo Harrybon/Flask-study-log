@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>for标签</title>
+</head>
+<body>
+    <!--将05-head.html导入到当前模板中-->
+    <h1>------导入模板网页------</h1>
+    {% include '05-head.html' %}
+    <h1>----------------------</h1>
+    <h1>导入宏文件</h1>
+    {% import 'macro.html' as macros %}
+    <h1>-------------------------------------------------</h1>
+    <ul>
+        {% for name in params.list %}
+            {{macros.show_li(name)}}
+        {% endfor %}
+    </ul>
+    <!--宏的声明:接受字符串参数，在p中打印-->
+    {% macro showP(str)　%}
+        <h1 style="background: aqua";>{{str}}</h1>
+    {% endmacro %}
+    <!--调用宏-->
+    <h1>宏的演示</h1>
+    {% for name in params.list %}
+        {{showP(name)}}
+    {% endfor %}
+    <h1>-------------------------------------------------</h1>
+    <!--for标签的使用-->
+    <h1>for标签的使用</h1>
+    {% for name in params.list%}
+        <h1 style="color:
+        {% if loop.first %}
+            palevioletred
+        {% elif loop.last %}
+            #4B8BF4
+        {% else %}
+            darkgreen
+        {% endif %}
+        ;">{{name}}</h1>
+
+    {% endfor %}
+    {% for y in params.dict%}
+    <h1>{{y}}:{{params.dict[y]}}</h1>
+    {% endfor %}
+    {% for key,values in params.dict.items()%}
+    <h1>{{key}}:{{values}}</h1>
+    {% endfor %}
+</body>
+</html>

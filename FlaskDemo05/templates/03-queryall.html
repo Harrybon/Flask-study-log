@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据插入</title>
+    <style>
+        table{
+            border: 2px solid;
+        }
+        td{
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>邮箱</td>
+            <td>操作</td>
+        </tr>
+
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.username}}</td>
+                    <td>{{ user.age }}</td>
+                    <td>{{ user.email}}</td>
+                    <td><a href="/04-modify/{{user.id}}">修改</a><a href="javascript:deleteUser({{ user.id }})">删除</a></td>
+                </tr>
+                    <script>
+                        {#            删除指定用户的方法#}
+                        function deleteUser(id){
+                            if(window.confirm('确定要删除？')){
+                                location.href='/06-delete/?id='+id
+                            }
+                        }
+                    </script>
+            {% endfor %}
+
+    </table>
+{#        <tr>#}
+{#            <td>{{ params.user1_name }}</td>#}
+{#            <td>{{ params.user1_age }}</td>#}
+{#            <td>{{ params.user1_email }}</td>#}
+{#            <td></td>#}
+{#        </tr>#}
+    <script>
+        function deleteUser(){
+{#            删除指定用户的方法#}
+        }
+    </script>
+</body>
+</html>

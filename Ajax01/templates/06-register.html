@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/js/common.js"></script>
+    <script src="/static/is/jquery-1.11.3.js"></script>
+    <script>
+        $(function () {
+           $("[name='loginname']").blur(function(){
+              var xhr = getxhr();
+              var lname = this.value();
+              var url = '06-server?lname='+lanme;
+              xhr.open('get',url,true);
+              xhr.onreadystatechange = function () {
+                  if (xhr.readyState == 4 && xhr.status == 200){
+                      $("#loginNameShow").html(xhr.responseText)
+                  }
+              }
+              xhr.send(null);
+           });
+        });
+    </script>
+</head>
+<body>
+<form action="" method="post">
+    <p>
+        登录名称：<input type="text" name="loginname">
+        <span id="loginNameShow"></span>
+    </p>
+    <p>登陆密码：<input type="password" name="loginpwd"></p>
+    <p>用户名称：<input type="text" name="uname"></p>
+    <p><input type="submit"></p>
+</form>
+</body>
+</html>

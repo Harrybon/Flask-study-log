@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask变量类型</title>
+    <style>
+        h1 {
+            width: 800px;
+            height: 35px;
+            background: #4A8AF4;
+            color: yellow;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!--变量不存在，不会报错，继续找属性会报错-->
+    <h1>{{params.person}}</h1>
+    <h1>{{params.list}}</h1>
+    <h1>列表中的第一个元素</h1>
+    <h1>{{params.list[0]}}</h1>
+    <h1>{{params['tuple']}}</h1>
+    <h1>元祖中的第二个元素</h1>
+    <h1>{{params['tuple'][1]}}</h1>
+    <h1>{{params.person.name}}</h1>
+    <h1>获取person  say</h1>
+    <h1>{{params.person.say()}}</h1>
+    <h1>{{params.dict}}</h1>
+    <h1>字典中值为a的值</h1>
+    <h1>{{params.dict.a}}</h1>
+    <h1>过滤器</h1>
+    <h1>原句：{{params.uname}}</h1>
+    <h1>capitalize:{{params.uname|capitalize}}</h1>
+    <h1>lower:{{params.uname|lower}}</h1>
+    <h1>upper:{{params.uname|upper}}</h1>
+    <h1>trim:{{params.uname|trim}}</h1>
+
+</body>
+</html>

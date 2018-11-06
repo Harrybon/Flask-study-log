@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学员课程插入</title>
+</head>
+<body>
+<form action="/010-register-student" method="post">
+    <p>学员：
+    <select name="sid" id="">
+        {% for foo in students %}
+            <option value="{{ foo.id }}">{{ foo.sname }}</option>
+        {% endfor %}
+    </select>
+    </p>
+    <p>
+        老师
+        <select name="tids" id=""  multiple>
+        {% for foo in teachers %}
+            <option value="{{ foo.id }}">{{ foo.tname }}</option>
+        {% endfor %}
+        </select>
+    </p>
+    <p>
+        <input type="submit" value="提交">
+    </p>
+    <p>
+        <input type="button" value="查看" onclick="location.href='/011-show'">
+    </p>
+
+</form>
+</body>
+</html>
