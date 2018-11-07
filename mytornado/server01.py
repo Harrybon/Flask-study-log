@@ -11,5 +11,7 @@ if __name__ == "__main__":
     # http_server.bind(options.port)
     # http_server.start(num)
     # http_server.listen(config.options['port'])
-    app.listen(config.options['port'])
+    port = config.options['port']
+    app.listen(port)
+    print('http://localhost:%s' % port)
     IOLoop.instance().start()

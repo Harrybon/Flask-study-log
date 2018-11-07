@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/jquery-1.11.3.js"></script>
+    <script>
+        function loadusers() {
+            var xhr = getxhr();
+            xhr.open('get','/04-server',true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200){
+                    var resText = xhr.responseText;
+                    var arr = JSON.parse(resText);
+                    var html = '';
+                    $.each(arr,function (i,obj) {
+                        html += "<tr>";
+       					    html += "<td>"+obj.loginname+"</td>";
+       					    html += "<td>"+obj.loginpwd+"</td>";
+       					    html += "<td>"+obj.uname+"</td>";
+                            html += "<td>";
+       					        html += "<button onclick='delUser(" + obj.id + ");'>删除</button> ";
+       				    html += "</tr>";
+                    });
+                    $("#body").html(html)
+                        }
+                    };
+
+            xhr.send(null)
+        }
+        function delUser(id) {
+            if(window.confirm('确认要删除吗')){
+                //ajax异步删除
+                var xhr = getxhr();
+                url = '/04-delete?id='+id
+                xhr.open('get',url,true);
+                xhr.onreadystatechange = function () {
+                    if(xhr.readyState == 4&&xhr.status ==200){
+                        var obj = JSON.parse(xhr.responseText);
+                        if(obj.status == 1){
+                            alert(obj.msg);
+                            loadusers()
+                        }else{
+                            alert(obj.msg)
+                        }
+                    }
+                }
+                xhr.send(null)
+
+            }
+        }
+        $(function () {
+            loadusers();
+        })
+    </script>
+</head>
+<body>
+    <table border="1" width="400">
+        <thead>
+            <tr>
+                <th>登录名</th>
+                <th>密码</th>
+                <th>用户名</th>
+                <th>删除</th>
+            </tr>
+        </thead>
+        <tbody id="body">
+
+        </tbody>
+
+    </table>
+</body>
+</html>

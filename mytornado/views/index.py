@@ -16,6 +16,15 @@ class TextHandler(RequestHandler):
     def get(self,*args,**kwargs):
         print(self.name,self.hobby)
         self.write('hello')
+#预先设置
+class HeaderHandler(RequestHandler):
+
+    def set_default_headers(self):
+        self.set_header("Content-Type",'text/html;charset=UTF-8')
+
+
+    def get(self, *args, **kwargs):
+        pass
 
 class JsonHandler(RequestHandler):
     def get(self, *args, **kwargs):
@@ -25,7 +34,10 @@ class JsonHandler(RequestHandler):
             'weight':70,
             'height':186
         }
+        # 将字典转换成字符串
         jsonStr = json.dumps(per)
+        self.set_header("Content-Type",'application/json; charset=UTF-8')
+        self.set_header('uname','bon')
         self.write(jsonStr)
 
 

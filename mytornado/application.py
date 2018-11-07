@@ -9,7 +9,8 @@ class Application(tornado.web.Application):
             (r'/', index.IndexHandler),
             (r'/test',index.TextHandler,{'name':'bon','hobby':'love'},),
             (r'/json01',index.JsonHandler),
-            (r'/json02', index.Json2Handler)
+            (r'/json02', index.Json2Handler),
+            (r'/header',index.HeaderHandler),
         ]
         super(Application,self).__init__(handlers,**config.settings)
 

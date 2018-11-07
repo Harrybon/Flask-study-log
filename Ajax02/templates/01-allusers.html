@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+            $('#btnAjax').click(function () {
+                var xhr = getxhr();
+                xhr.open('get','/01-server',true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200){
+                        var resText = xhr.responseText;
+                        console.log(resText)
+                    }
+                };
+                xhr.send(null);
+            })
+        })
+    </script>
+</head>
+<body>
+    <button id="btnAjax">ajax-json</button>
+</body>
+</html>
